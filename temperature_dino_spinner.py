@@ -5,7 +5,7 @@ from time import sleep
 def update_temp():
     with open("/sys/bus/w1/devices/28-3c01f0963ed3/w1_slave", 'r') as fin:
         raw_text = fin.readlines()
-        return float(re.match(r"t=([0-9]+)", raw_text[-1])) / 1000    
+        return float(re.match(r"t=([0-9]+)", raw_text[1])) / 1000    
 
 def temp_to_dc(temp):
     return (temp / 40) * 10.5 + 2.5
